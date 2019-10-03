@@ -13,7 +13,11 @@ class Question1 {
     * @param y 正整数
     * @return 文字列 "Even" または "Odd"
     */
-  def q1_1(x: Int, y: Int): String = ???
-
-
+  def q1_1(x: Int, y: Int): String = {
+    if(x * y % 2 == 0){
+      "Even"
+    } else {
+      "Odd"
+    }
+  }
 }
