@@ -18,5 +18,18 @@ class Challenge2 {
     * @param chk 比較関数
     * @return ソートされている: true, ソートされていない: false
     */
-  def isSorted[A](target: Array[A], chk: (A, A) => Boolean): Boolean = ???
+  def isSorted[A](target: Array[A], chk: (A, A) => Boolean): Boolean = {
+    if(target.length  < 2) return true
+    @annotation.tailrec
+    def loop(n:Int, m:Int):Boolean = {
+      if(m == target.length) true
+      else {
+        if(chk(target(n), target(m)))
+          loop(m, m+1)
+        else return false
+      }
+    }
+
+    loop(0, 1)
+  }
 }
