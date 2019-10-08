@@ -30,5 +30,11 @@ class Challenge1 {
     * @param n 整数 (0 < n < 47)
     * @return n番目のフィボナッチ数
     */
-  def fib(n: Int): Int = ???
+  def fib(n: Int): Int = {
+    def loop(a: Int, b: Int, n: Int): Int = {
+      if(n == 0) a
+      else loop(b, a+b, n-1)
+    }
+    loop(0, 1, n)
+  }
 }
