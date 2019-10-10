@@ -9,7 +9,13 @@ class Challenge3 {
     * @param f A, Bの二つの型の引数を受け取り、Cの型の戻り値を返す関数
     * @return カリー化された関数f
     */
-  def curry[A, B, C](f: (A, B) => C): A => B => C = ???
+  def curry[A, B, C](f: (A, B) => C): A => B => C =
+    a => f(a, _)
+    def test( ): Unit = {
+      val n = curry((a :Int, b :Long) => (a+b))
+      val m = n(1)
+      m(3L)
+    }
 
 
   /**
@@ -18,15 +24,22 @@ class Challenge3 {
     * @param f A => B => Cの関数のチェイン
     * @return A, Bの二つの型の引数を受け取り、Cの型の戻り値を返す関数
     */
-  def uncurry[A, B, C](f: A => B => C): (A, B) => C = ???
+  def uncurry[A, B, C](f: A => B => C): (A, B) => C = {
+    (a :A, b :B) =>
+      f(a)(b)
+  }
 
 
-  /**
+    /**
     * ２つの関数を合成する高階関数を実装してください。
     *
     * @param f Bの型の引数を受け取り、Cの型の値を返す関数
     * @param g Aの型の引数を受け取り、Bの型の値を返す関数
     * @return Aの型の引数を受け取り、Cの型の値を返す関数
     */
-  def composite[A, B, C](f: B => C, g: A => B): A => C = ???
+  def composite[A, B, C](f: B => C, g: A => B): A => C = {
+    (a :A) =>
+      f(g(a))
+  }
+
 }

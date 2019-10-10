@@ -12,5 +12,12 @@ class Question2 {
     * @param n 整数 (0 < n)
     * @return 1からnまでの整数の合計
     */
-  def sum(n: Int): Int = ???
+  def sum(n: Int): Int = {
+    if(n == 0)
+      return n
+    else
+      sum(n-1) + n
+
+  }
 }
+

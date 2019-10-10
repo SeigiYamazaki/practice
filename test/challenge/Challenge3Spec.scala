@@ -30,7 +30,7 @@ class Challenge3Spec extends WordSpec {
 
       assert(result)
     }
-
+//
     "２つの関数を合成する高階関数を実装してください。" in {
       val f = challenge.composite((_: B) => new C, (_: A) => new B)
       val result = f match {
