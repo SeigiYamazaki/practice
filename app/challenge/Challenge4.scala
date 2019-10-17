@@ -16,7 +16,21 @@ class Challenge4 {
     * @param eachLengths 文字列を分割する桁数のリスト
     * @return 分割した文字列リスト
     */
-  def splitString(line: String, eachLengths: Seq[Int]): Seq[String] = ???
+  def splitString(line: String, eachLengths: Seq[Int]): Seq[String] = {
+
+    def sum(n: Int): Int = {
+      if(n == 0) 0
+      else sum(n-1) + eachLengths(n-1)
+    }
+
+    for(i <- 0 until eachLengths.size) yield {
+      //println(i)
+      //println(sum(i))
+      val x = sum(i)
+      line.substring(x, x+eachLengths(i))
+    }
+
+  }
 
   /**
     * 文字列 line に、次のような電文が渡されます。
@@ -37,7 +51,12 @@ class Challenge4 {
     * @param line 分割対象の文字列
     * @return Reportクラスのインスタンス
     */
-  def createReport(line: String): Report = ???
+  def createReport(line: String): Report = {
+    val x = splitString(line, Seq(2, 6, 10, 10, 20, 20, 1))
+    //println(x(0))
+    Report(x(0), x(1),  x(2), x(3), x(4), x(5), x(6))
+
+  }
 
   case class Report
   (
